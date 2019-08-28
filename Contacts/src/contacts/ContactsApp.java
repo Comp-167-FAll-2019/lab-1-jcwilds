@@ -43,18 +43,15 @@ public class ContactsApp extends Application {
         
         VBox commandPane = new VBox();
         Button viewContactButton = new Button("View Contact Details");
-        viewContactButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                Contact selectedContact = contacts.get(contactListView.getSelectionModel().getSelectedIndex());
-                
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle(selectedContact.getFirstName() + "'s Contact Details");
-                alert.setHeaderText(null);
-                alert.setContentText(selectedContact.toString());
-                
-                alert.showAndWait();
-            }
+        viewContactButton.setOnAction((ActionEvent e) -> {
+            Contact selectedContact = contacts.get(contactListView.getSelectionModel().getSelectedIndex());
+            
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle(selectedContact.getFirstName() + "'s Contact Details");
+            alert.setHeaderText(null);
+            alert.setContentText(selectedContact.toString());
+            
+            alert.showAndWait();
         });
         Button closeButton = new Button("Close");
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -83,7 +80,7 @@ public class ContactsApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        loadContacts(args[1]);
+        loadContacts(args[0]);
         launch(args);
     }
     
